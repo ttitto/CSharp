@@ -31,16 +31,13 @@ namespace LaptopShop
         }
 
         public Laptop(string model, string manufacturer, string processor, string graphicsCard, Battery battery, float batteryHours = 0, float screenSize = 0, decimal price = 0)
+            : this(model, manufacturer, price)
         {
-            this.Model = model;
-            this.Manufacturer = manufacturer;
             this.Processor = processor;
             this.GraphicsCard = graphicsCard;
             this.Battery = battery;
             this.BatteryHours = batteryHours;
             this.ScreenSize = screenSize;
-            this.Price = price;
-
         }
 
         public string Model
@@ -125,7 +122,7 @@ namespace LaptopShop
 
         public override string ToString()
         {
-            return String.Format("Manufacturer: {0}\nModel: {1}\nProcessor: {2}\nGraphics Card: {3}\nBattery: {4}\nBattery hours: {5}\n"+
+            return String.Format("Manufacturer: {0}\nModel: {1}\nProcessor: {2}\nGraphics Card: {3}\nBattery: {4}\nBattery hours: {5}\n" +
                 "Screen size: {6}\nPrice: {7:0.00}",
                 this.Manufacturer, this.Model, this.Processor, this.GraphicsCard, this.Battery, this.BatteryHours, this.ScreenSize, this.Price);
         }

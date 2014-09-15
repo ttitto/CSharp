@@ -9,7 +9,7 @@ namespace PCCatalogue
     class Computer
     {
         private string name;
-        private List<Component> components;
+        private IList<Component> components;
         //private decimal price;
 
         public Computer(string name)
@@ -36,7 +36,7 @@ namespace PCCatalogue
             set
             {
                 if (null == value) throw new ArgumentNullException("Computer components can not be null!");
-                this.components = value.ToList();
+                this.components = value;
             }
 
         }

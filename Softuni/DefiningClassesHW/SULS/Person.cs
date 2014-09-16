@@ -56,7 +56,7 @@ namespace SULS
 
         public override string ToString()
         {
-            return string.Format("Name: {0} {1}, {2} years old", this.FName, this.LName, this.Age);
+            return string.Format("{3}: Name: {0} {1}, {2} years old", this.FName, this.LName, this.Age, GetType().Name);
         }
 
     }

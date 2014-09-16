@@ -10,6 +10,12 @@ namespace SULS
     {
         private int visitsNumber;
 
+
+        public OnsiteStudent(string fName, string lName, string studentNumber, float averageGrade, int age = 0, int visitsNumber = 0)
+            : base(fName, lName, studentNumber, averageGrade, age)
+        {
+            this.VisitsNumber = visitsNumber;
+        }
         public int VisitsNumber
         {
             get { return visitsNumber; }
@@ -20,10 +26,10 @@ namespace SULS
             }
         }
 
-        public OnsiteStudent(string fName, string lName, string studentNumber, float averageGrade, int age = 0, int visitsNumber = 0)
-            : base(fName, lName, studentNumber, averageGrade, age)
+        public override string ToString()
         {
-            this.VisitsNumber = visitsNumber;
+            string baseStr=base.ToString();
+            return baseStr + string.Format("\n Visits: {0}", this.VisitsNumber);
         }
     }
 }

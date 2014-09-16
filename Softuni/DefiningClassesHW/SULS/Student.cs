@@ -11,14 +11,14 @@ namespace SULS
         private string studentNumber;
         private float averageGrade;
 
-        public Student(string fName, string lName, string studentNumber)
-            :base(fName, lName)
+        public Student(string fName, string lName, string studentNumber, int age=0)
+            :base(fName, lName, age)
         {
             this.StudentNumber = studentNumber;
         }
 
         public Student(string fName, string lName, string studentNumber, float averageGrade, int age=0)
-            : this(fName, lName, studentNumber)
+            : this(fName, lName, studentNumber,age)
         {
             this.AverageGrade = averageGrade;
         }
@@ -44,7 +44,7 @@ namespace SULS
         public override string ToString()
         {
             string baseStr=base.ToString();
-            return baseStr + string.Format("\nStudent number: {0}\nAverage grade: {1}", this.StudentNumber, this.AverageGrade);
+            return baseStr + string.Format(", Student number: {0}, Average grade: {1}", this.StudentNumber, this.AverageGrade);
         }
     }
 }

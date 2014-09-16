@@ -28,7 +28,7 @@ namespace SULS
 
         public override string ToString()
         {
-            return base.ToString() + string.Format("\nDropout reason: {0}", this.DropoutReason);
+            return base.ToString() + string.Format(", Dropout reason: {0}", this.DropoutReason);
         }
 
         public void Reapply()

@@ -11,33 +11,29 @@ namespace LaptopShop
         private string model;
         private string manufacturer;
         private string processor;
+        private string ram;
+        private string hdd;
         private string graphicsCard;
         private Battery battery;
-        private float batteryHours;
-        private float screenSize;
+        private string screen;
         private decimal price;
 
-        public Laptop(string model, string manufacturer)
-            : this("unknown", "unknown", "unknown", "unknown", new Battery("unknown"))
+        public Laptop(string model, decimal price)
         {
             this.Model = model;
-            this.Manufacturer = manufacturer;
-        }
-
-        public Laptop(string model, string manufacturer, decimal price)
-            : this(model, manufacturer)
-        {
             this.Price = price;
         }
 
-        public Laptop(string model, string manufacturer, string processor, string graphicsCard, Battery battery, float batteryHours = 0, float screenSize = 0, decimal price = 0)
-            : this(model, manufacturer, price)
+        public Laptop(string model, decimal price, string manufacturer = null, string processor = null, string ram = null, string hdd = null, string graphicsCard = null, Battery battery = null, string screen = null)
+            : this(model, price)
         {
+            this.Manufacturer = manufacturer;
             this.Processor = processor;
+            this.Ram = ram;
+            this.Hdd = hdd;
             this.GraphicsCard = graphicsCard;
             this.Battery = battery;
-            this.BatteryHours = batteryHours;
-            this.ScreenSize = screenSize;
+            this.Screen = screen;
         }
 
         public string Model
@@ -45,7 +41,7 @@ namespace LaptopShop
             get { return this.model; }
             set
             {
-                if (null == value || value.Length < 1) throw new ArgumentNullException("Model can not be null or empty!");
+                if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("Model can not be null or empty!");
                 this.model = value;
             }
         }
@@ -54,9 +50,8 @@ namespace LaptopShop
             get { return this.manufacturer; }
             set
             {
-                if (null == value || value.Length < 1) throw new ArgumentNullException("Manufacturer can not be null or empty!");
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for manufacturer!");
                 this.manufacturer = value;
-
             }
         }
         public string Processor
@@ -64,52 +59,51 @@ namespace LaptopShop
             get { return this.processor; }
             set
             {
-                if (null == value || value.Length < 1) throw new ArgumentNullException("Processor can not be null or empty!");
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for processor!");
                 this.processor = value;
             }
         }
-
+        public string Ram
+        {
+            get { return this.ram; }
+            set
+            {
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for RAM!");
+                this.ram = value;
+            }
+        }
+        public string Hdd
+        {
+            get { return this.hdd; }
+            set
+            {
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for HDD!");
+                this.hdd = value;
+            }
+        }
         public string GraphicsCard
         {
             get { return this.graphicsCard; }
             set
             {
-                if (null == value || value.Length < 1) throw new ArgumentNullException("Graphics Card can not be empty!");
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for graphics card!");
                 this.graphicsCard = value;
             }
         }
-
         public Battery Battery
         {
             get { return this.battery; }
-            set
-            {
-                if (null == value) throw new ArgumentNullException("Battery can not be empty!");
-
-                this.battery = value;
-            }
+            set { this.battery = value; }
         }
-
-        public float BatteryHours
+        public string Screen
         {
-            get { return this.batteryHours; }
+            get { return this.screen; }
             set
             {
-                if (value < 0) throw new ArgumentException("Battery hours can not be negative!");
-                this.batteryHours = value;
+                if (value != null && value.Length < 1) throw new ArgumentException("Invalid value for screen!");
+                this.screen = value;
             }
         }
-
-        public float ScreenSize
-        {
-            get { return this.screenSize; }
-            set
-            {
-                if (value < 0) throw new ArgumentException("Screen size can not be negative!");
-                this.screenSize = value;
-            }
-        }
-
         public decimal Price
         {
             get { return this.price; }
@@ -122,9 +116,35 @@ namespace LaptopShop
 
         public override string ToString()
         {
-            return String.Format("Manufacturer: {0}\nModel: {1}\nProcessor: {2}\nGraphics Card: {3}\nBattery: {4}\nBattery hours: {5}\n" +
-                "Screen size: {6}\nPrice: {7:0.00}",
-                this.Manufacturer, this.Model, this.Processor, this.GraphicsCard, this.Battery, this.BatteryHours, this.ScreenSize, this.Price);
+            StringBuilder laptopStr = new StringBuilder();
+            laptopStr.AppendLine("model: " + this.Model);
+            if (this.Manufacturer != null)
+            {
+                laptopStr.AppendLine("manufacturer: " + this.Manufacturer);
+            }
+            if (this.Processor != null)
+            {
+                laptopStr.AppendLine("processor: " + this.Processor);
+            }
+            if (this.Ram != null)
+            {
+                laptopStr.AppendLine("RAM: " + this.Ram);
+            }
+            if (this.Hdd != null)
+            {
+                laptopStr.AppendLine("HDD: " + this.Hdd);
+            }
+            if (this.Screen != null)
+            {
+                laptopStr.AppendLine("screen: " + this.Screen);
+            }
+            if (this.Battery != null)
+            {
+                laptopStr.Append(this.Battery.ToString());
+            }
+            laptopStr.AppendLine("price: " + this.Price);
+
+            return laptopStr.ToString();
         }
     }
 }

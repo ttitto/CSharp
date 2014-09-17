@@ -41,7 +41,7 @@ namespace LaptopShop
             get { return this.model; }
             set
             {
-                if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("Model can not be null or empty!");
+                if (string.IsNullOrEmpty(value)) throw new ArgumentNullException();
                 this.model = value;
             }
         }

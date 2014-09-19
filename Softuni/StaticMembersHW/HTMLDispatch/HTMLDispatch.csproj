@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ElementBuilder.cs" />
     <Compile Include="HTMLDispatch.cs" />
+    <Compile Include="HTMLDispatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

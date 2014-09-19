@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometry", "Geometry\Geomet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitArray", "BitArray\BitArray.csproj", "{A33302F3-3514-4984-A5E0-52603138F4EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTMLDispatch", "HTMLDispatch\HTMLDispatch.csproj", "{B2D99E63-124F-42D9-8411-61F1E050F11F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A33302F3-3514-4984-A5E0-52603138F4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33302F3-3514-4984-A5E0-52603138F4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A33302F3-3514-4984-A5E0-52603138F4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D99E63-124F-42D9-8411-61F1E050F11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D99E63-124F-42D9-8411-61F1E050F11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D99E63-124F-42D9-8411-61F1E050F11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D99E63-124F-42D9-8411-61F1E050F11F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

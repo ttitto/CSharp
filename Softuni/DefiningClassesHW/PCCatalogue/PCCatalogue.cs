@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace PCCatalogue
+﻿namespace PCCatalogue
 {
-    class PCCatalogueClass
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text;
+    using System.Threading;
+
+    public class PCCatalogueClass
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
@@ -27,10 +26,9 @@ namespace PCCatalogue
             compIntelGeForce.Components.Add(vcardGeForce);
             compIntelGeForce.Components.Add(mcardVLC);
 
-            List < Computer > computers= new List<Computer>() { compAMDRadeon, compIntelGeForce };
+            List<Computer> computers = new List<Computer>() { compIntelGeForce, compAMDRadeon };
 
-            computers.OrderBy(c=>c.Price).ToList().ForEach(c => Console.WriteLine(c.ToString()));
-            
+            computers.OrderBy(c => c.Price).ToList().ForEach(c => Console.WriteLine(c.ToString()));
         }
     }
 }

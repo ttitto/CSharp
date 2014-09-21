@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PCCatalogue
+﻿namespace PCCatalogue
 {
-    public abstract class Component
+    using System;
+
+    protected abstract class Component
     {
         private string name;
         private string details;
         private decimal price;
 
-        public Component(string name,decimal price, string details=null)
+        public Component(string name, decimal price, string details = null)
         {
             this.Name = name;
             this.Details = details;
@@ -20,10 +17,18 @@ namespace PCCatalogue
 
         public string Name
         {
-            get { return this.name; }
+            get
+            {
+                return this.name;
+            }
+
             set
             {
-                if (null == value) throw new ArgumentNullException("Component name can not be null");
+                if (null == value)
+                {
+                    throw new ArgumentNullException("Component name can not be null");
+                }
+
                 this.name = value;
             }
         }
@@ -36,10 +41,18 @@ namespace PCCatalogue
 
         public decimal Price
         {
-            get { return this.price; }
+            get
+            {
+                return this.price;
+            }
+
             set
             {
-                if (value < 0) throw new ArgumentException("Component price can not be negative!");
+                if (value < 0) 
+                {
+                    throw new ArgumentException("Component price can not be negative!");
+                }
+
                 this.price = value;
             }
         }
@@ -47,10 +60,12 @@ namespace PCCatalogue
         public override string ToString()
         {
             string compToString = string.Format("Name:{0}, Price: {1:C}", this.Name, this.Price);
+
             if (null != this.Details)
             {
-                compToString += string.Format(", Details: {0}",this.Details);
+                compToString += string.Format(", Details: {0}", this.Details);
             }
+
             return compToString;
         }
     }

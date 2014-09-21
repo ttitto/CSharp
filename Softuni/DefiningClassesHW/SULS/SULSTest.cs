@@ -29,6 +29,7 @@ namespace SULS
             List<Person> persons = new List<Person>() { nikbank,vGeorg,nakov,aRus,toi, blagoi,misho,
                 pesho, katya,valyo,geca,batkata};
 
+            valyo.CurrentCourses.Add("JS Applications");
            
             persons.Where(p => p is CurrentStudent).OrderBy(p => ((Student)p).AverageGrade).ToList().ForEach(p => Console.WriteLine(p.ToString()));
 

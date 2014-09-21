@@ -62,7 +62,7 @@ namespace Space3D
             return String.Format("{3}{{ {0:F},{1:F},{2:F} }}", this.X.ToString(), this.Y.ToString(), this.Z.ToString(), this.Name);
         }
 
-        public static Point3D Deserialize(string pointStr){
+        public static Point3D DeSerialize(string pointStr){
             Regex rgx = new Regex(@"(.+?){(.+?),(.+?),(.+?)}");
             MatchCollection matches = rgx.Matches(pointStr);
                 var g = (matches[0] as Match).Groups ;

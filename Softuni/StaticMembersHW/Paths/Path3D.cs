@@ -9,19 +9,14 @@ namespace Space3D
     public class Path3D
     {
 
-        private List<Point3D> paths;
+        private IList<Point3D> paths;
 
         public Path3D(params Point3D[] points3D)
         {
-            this.Paths = new List<Point3D>();
-            foreach (var point in points3D)
-            {
-                this.Paths.Add(point);
-            }
-
+            this.Paths = points3D.ToList();
         }
 
-        public List<Point3D> Paths
+        public IList<Point3D> Paths
         {
             get { return this.paths; }
             set

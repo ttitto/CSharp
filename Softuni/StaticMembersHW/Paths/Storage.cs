@@ -41,7 +41,7 @@ namespace Space3D
                         var lines = line.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var l in lines)
                         {
-                            points.Add(Point3D.Deserialize(l));
+                            points.Add(Point3D.DeSerialize(l));
                         }
 
                         line = sr.ReadLine();

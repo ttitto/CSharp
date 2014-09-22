@@ -22,9 +22,9 @@
 
                     counter++;
                 }
-                catch (FormatException fex)
+                catch (ArgumentException aex)
                 {
-                    Console.WriteLine("{0} Repeat input!", fex.Message);
+                    Console.WriteLine("{0} Repeat input!", aex.Message);
                 }
                 catch (Exception ex)
                 {

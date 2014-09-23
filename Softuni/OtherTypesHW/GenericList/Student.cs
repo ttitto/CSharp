@@ -21,18 +21,7 @@
 
         public int CompareTo(Student student)
         {
-            if (this.FacNumber < student.FacNumber)
-            {
-                return -1;
-            }
-            else if (this.FacNumber == student.FacNumber)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+            return this.FacNumber.CompareTo(student.FacNumber);
         }
     }
 }

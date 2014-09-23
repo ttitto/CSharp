@@ -1,11 +1,8 @@
 ﻿namespace GenericList
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
-    public class Student
+    public class Student : IComparable<Student>
     {
         public Student(string name, int facNumber)
         {
@@ -20,6 +17,22 @@
         public override string ToString()
         {
             return this.Name + " " + this.FacNumber;
+        }
+
+        public int CompareTo(Student student)
+        {
+            if (this.FacNumber < student.FacNumber)
+            {
+                return -1;
+            }
+            else if (this.FacNumber == student.FacNumber)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 }

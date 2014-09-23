@@ -45,6 +45,7 @@
     <Compile Include="GenericListClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="VersionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

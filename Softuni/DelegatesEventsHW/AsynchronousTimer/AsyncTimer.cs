@@ -1,15 +1,11 @@
 ﻿namespace AsynchronousTimer
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading;
-    using System.Threading.Tasks;
 
     public class AsyncTimer
     {
-        public Action Tick;
+        private Action tick;
 
         private int interval;
         private int ticks;
@@ -18,7 +14,7 @@
         {
             this.Interval = interval;
             this.Ticks = ticks;
-            this.Tick = method;
+            this.tick = method;
             this.OnTick(EventArgs.Empty);
         }
 
@@ -60,14 +56,14 @@
 
         public virtual void OnTick(EventArgs e)
         {
-            if (null != this.Tick)
+            if (null != this.tick)
             {
                 Thread newThread = new Thread(() =>
                   {
                       int passedTicks = 0;
                       while (passedTicks < this.Ticks)
                       {
-                          this.Tick();
+                          this.tick();
                           passedTicks++;
                           Thread.Sleep(this.Interval);
                       }

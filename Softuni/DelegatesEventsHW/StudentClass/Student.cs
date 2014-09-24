@@ -1,12 +1,8 @@
 ﻿namespace StudentClass
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    class Student
+    public class Student
     {
         private string name;
         private uint age;
@@ -32,26 +28,32 @@
                 {
                     throw new ArgumentException("Student's name can not be null or empty");
                 }
-                OnPropertyChanged(new PropertyChangedEventArgs<string>("Name", this.name, value));
+
+                this.OnPropertyChanged(new PropertyChangedEventArgs<string>("Name", this.name, value));
                 this.name = value;
             }
         }
 
-
         public uint Age
         {
-            get { return this.age; }
-            set { this.age = value; }
+            get
+            {
+                return this.age;
+            }
+
+            set
+            {
+                this.OnPropertyChanged(new PropertyChangedEventArgs<string>("Age", this.Age.ToString(), value.ToString()));
+                this.age = value;
+            }
         }
 
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs<string> e)
         {
-            if (null != PropertyChanged)
+            if (null != this.PropertyChanged)
             {
-                PropertyChanged(this, e);
+                this.PropertyChanged(this, e);
             }
         }
-
-
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractionCalculator", "Fract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericList", "GenericList\GenericList.csproj", "{B567E6BC-81A7-4441-978B-88AA896DE6B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDocumentGenerator", "WordDocumentGenerator\WordDocumentGenerator.csproj", "{6FCCE496-EE9E-4902-BA3A-A626AF149424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B567E6BC-81A7-4441-978B-88AA896DE6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B567E6BC-81A7-4441-978B-88AA896DE6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B567E6BC-81A7-4441-978B-88AA896DE6B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCCE496-EE9E-4902-BA3A-A626AF149424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCCE496-EE9E-4902-BA3A-A626AF149424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCCE496-EE9E-4902-BA3A-A626AF149424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCCE496-EE9E-4902-BA3A-A626AF149424}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

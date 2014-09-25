@@ -1,10 +1,6 @@
 ﻿namespace FractionCalculator
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public struct Fraction
     {
@@ -27,12 +23,10 @@
 
             set
             {
-                if (value > long.MaxValue || value < long.MinValue)
+                checked
                 {
-                    throw new OverflowException("The numerator value is outside the range, allowed for long integers");
+                    this.numerator = value;
                 }
-
-                this.numerator = value;
             }
         }
 
@@ -50,12 +44,10 @@
                     throw new DivideByZeroException("Denominator can not be zero!");
                 }
 
-                if (value > long.MaxValue || value < long.MinValue)
+                checked
                 {
-                    throw new OverflowException("The denominator value is outside the range, allowed for long integers");
+                    this.denominator = value;
                 }
-
-                this.denominator = value;
             }
         }
 

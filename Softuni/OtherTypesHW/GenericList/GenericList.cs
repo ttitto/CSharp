@@ -154,14 +154,14 @@
             return this.Inner.Contains(element);
         }
 
-        public T Min<T>()
+        public T Min<B>()
         {
-            return (dynamic)this.Inner.Min();
+            return this.Inner.Min();
         }
 
-        public T Max<T>()
+        public T Max<B>()
         {
-            return (dynamic)this.Inner.Max();
+            return this.Inner.Max();
         }
 
         public override string ToString()

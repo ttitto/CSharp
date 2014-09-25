@@ -9,12 +9,12 @@
         public Location(double latitude, double longitude, Planet planet)
             : this()
         {
-            this.Lattitude = latitude;
+            this.Latitude = latitude;
             this.Longitude = longitude;
             this.Planet = planet;
         }
 
-        public double Lattitude
+        public double Latitude
         {
             get { return this.latitude; }
             set { this.latitude = value; }
@@ -34,7 +34,7 @@
 
         public override string ToString()
         {
-            return string.Format("{0}, {1} - {2}", this.Lattitude, this.Longitude, this.Planet);
+            return string.Format("{0}, {1} - {2}", this.Latitude, this.Longitude, this.Planet);
         }
     }
 }

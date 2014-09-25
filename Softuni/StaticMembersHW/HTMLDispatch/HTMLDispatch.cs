@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HTMLDispatch
+﻿namespace HTMLDispatch
 {
+    using System;
+
     class HTMLDispatchClass
     {
         static void Main(string[] args)
         {
-
             ElementBuilder div = new ElementBuilder("div");
             div.AddAttribute("id", "page");
             div.AddAttribute("class", "big");
@@ -27,7 +22,6 @@ namespace HTMLDispatch
 
             string myInput = HTMLDispatcher.CreateInput("number", "quantity", "230");
             Console.WriteLine(myInput);
-
         }
     }
 }

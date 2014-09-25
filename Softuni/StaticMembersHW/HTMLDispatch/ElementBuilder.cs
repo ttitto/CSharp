@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HTMLDispatch
+﻿namespace HTMLDispatch
 {
+    using System;
+    using System.Text;
+
     class ElementBuilder
     {
         private string tag;
@@ -13,9 +10,6 @@ namespace HTMLDispatch
         private string content;
         private string closing;
         private bool isVoid;
-
-        private string element;
-        private bool isWholeElement;
 
         public ElementBuilder(string tag, bool isVoid = false)
         {
@@ -33,14 +27,8 @@ namespace HTMLDispatch
             {
                 this.Closing = "</" + this.Tag + ">";
             }
-                
 
-        }
 
-        private ElementBuilder(bool isWholeElement, string element)
-        {
-            this.element = element;
-            this.isWholeElement = isWholeElement;
         }
 
         private string Tag
@@ -94,22 +82,12 @@ namespace HTMLDispatch
         }
 
         /// <summary>
-        /// Allows implicit conversion from String to ElementBuilder types
-        /// </summary>
-        /// <param name="elStr"></param>
-        /// <returns></returns>
-        public static implicit operator ElementBuilder(String elStr)
-        {
-            return new ElementBuilder(true, elStr);
-        }
-
-        /// <summary>
         /// Overloads the * operator to work with ElementBuilder objects
         /// </summary>
         /// <param name="elBld"></param>Instance of ElementBuilder class
         /// <param name="counter"></param>Repetition count
         /// <returns></returns>
-        public static ElementBuilder operator *(ElementBuilder elBld, int counter)
+        public static string operator *(ElementBuilder elBld, int counter)
         {
             StringBuilder elementSB = new StringBuilder();
             for (int i = 0; i < counter; i++)
@@ -128,15 +106,7 @@ namespace HTMLDispatch
         public string AddAttribute(string attr, string value)
         {
             this.Opening = this.Opening.TrimEnd(new[] { '/', '>', ' ' }) + string.Format(" {0}=\"{1}\"", attr, value);
-
-            //if (this.IsVoid)
-            //{
-            //    this.Opening += " />";
-            //}
-            //else
-            //{
-                this.Opening += ">";
-            //}
+            this.Opening += ">";
 
             return this.Opening;
         }
@@ -156,7 +126,6 @@ namespace HTMLDispatch
 
         public override string ToString()
         {
-            if (this.isWholeElement) return this.element;
             return this.Opening + this.Content + this.Closing;
         }
 

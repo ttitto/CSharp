@@ -43,9 +43,9 @@
                 mainText.IndentationAfter = 2.0f;
 
                 // Bulleted List
-                var gameCriteriaList = doc.AddList("Properly structured and follow all good OOP practices", 0, ListItemType.Bulleted);
-                doc.AddListItem(gameCriteriaList, "Awesome");
-                doc.AddListItem(gameCriteriaList, "...Very Awesome");
+                var gameCriteriaList = doc.AddList("Properly structured and follow all good OOP practices", 1, ListItemType.Bulleted);
+                doc.AddListItem(gameCriteriaList, "Awesome", 1);
+                doc.AddListItem(gameCriteriaList, "...Very Awesome", 1);
                 doc.InsertList(gameCriteriaList);
 
                 doc.InsertParagraph("");

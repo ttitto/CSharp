@@ -17,7 +17,7 @@
 
         public static StringBuilder AppendAll<T>(this StringBuilder sb, IEnumerable<T> items)
         {
-            return sb.Append(string.Join("", items));
+            return sb.Append(string.Join(string.Empty, items));
         }
     }
 }

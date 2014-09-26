@@ -16,7 +16,8 @@
             Console.WriteLine(sb.Substring(8, 16));
             Console.WriteLine(sb.RemoveText("ion method"));
             Console.WriteLine(sb.AppendAll<int>(numbers));
-            // Console.WriteLine(sb.AppendAll<long>(numbers)); // compile time error
+
+            // Console.WriteLine(sb.AppendAll<long>(numbers)); //// compile time error
         }
     }
 }

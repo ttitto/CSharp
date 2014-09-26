@@ -37,8 +37,7 @@
                         result.Add(item);
                     }
                 }
-
-            }
+                            }
 
             return result as IEnumerable<string>;
         }

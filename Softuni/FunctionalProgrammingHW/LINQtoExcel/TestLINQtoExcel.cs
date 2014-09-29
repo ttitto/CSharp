@@ -52,6 +52,32 @@
             {
                 Console.WriteLine(student.ToString());
             }
+
+            // Excel file generation
+            string[] headerItems = new string[] 
+            { 
+                "ID", 
+                "First name", 
+                "Last Name", 
+                "Email", 
+                "Gender", 
+                "Student type", 
+                "Exam result",
+                "Homework sent", 
+                "Homework evaluated",
+                "Teamwork", 
+                "Attendances", 
+                "Bonus", 
+                "Result"
+            };
+
+            ExcelGenerator<Student> excelGenerator = new ExcelGenerator<Student>(
+                @"../../students.xls",
+                "Online students",
+                headerItems,
+                onlineStudentsChart.ToList());
+
+            excelGenerator.GenerateFromCollection(new string[] { ", " });
         }
     }
 }

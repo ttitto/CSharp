@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using WordReportGenerator.DeleteMe;
-using Novacode;
-
-namespace WordReportGenerator
+﻿namespace WordReportGenerator
 {
+    using System;
+    using System.Collections.Generic;
+    using WordReportGenerator.DeleteMe;
+    using Novacode;
+
     public static class DocumentGenerator
     {
         public static string dirPath = "";

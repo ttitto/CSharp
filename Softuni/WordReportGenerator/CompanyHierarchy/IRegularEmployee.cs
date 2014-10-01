@@ -1,6 +1,6 @@
 ﻿namespace CompanyHierarchy
 {
-    public interface IRegularEmployee
+    public interface IRegularEmployee : IEmployee
     {
     }
 }

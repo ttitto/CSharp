@@ -1,6 +1,6 @@
 ﻿namespace CompanyHierarchy
 {
-    public enum Departments
+    public enum Department
     {
         Production,
         Accounting,

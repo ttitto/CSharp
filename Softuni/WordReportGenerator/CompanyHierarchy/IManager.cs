@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    public class IManager
+    public interface IManager : IEmployee
     {
-        IEnumerable<IEmployee> Employees { get; set; }
+        IList<IEmployee> Employees { get; set; }
     }
 }

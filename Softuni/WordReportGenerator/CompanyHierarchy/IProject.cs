@@ -4,14 +4,14 @@
 
     public interface IProject
     {
-        public string Name { get; set; }
+        string Name { get; set; }
 
-        public DateTime StartDate { get; set; }
+        DateTime StartDate { get; set; }
 
-        public ProjectStates State { get; set; }
+        ProjectState State { get; set; }
 
-        public string Detail { get; set; }
+        string Detail { get; set; }
 
-        public void CloseProject();
+        void CloseProject();
     }
 }

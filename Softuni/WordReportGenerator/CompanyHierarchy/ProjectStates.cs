@@ -1,6 +1,6 @@
 ﻿namespace CompanyHierarchy
 {
-    public enum ProjectStates
+    public enum ProjectState
     {
         Open,
         Closed

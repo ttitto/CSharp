@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    public interface IDeveloper
+    public interface IDeveloper : IRegularEmployee
     {
-        IEnumerable<IProject> projects { get; set; }
+        IList<IProject> Projects { get; set; }
     }
 }

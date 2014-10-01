@@ -4,10 +4,10 @@
 
     public interface ISale
     {
-        public string ProductName { get; set; }
+        string ProductName { get; set; }
 
-        public DateTime Date { get; set; }
+        DateTime SaleDate { get; set; }
 
-        public decimal Price { get; set; }
+        decimal Price { get; set; }
     }
 }

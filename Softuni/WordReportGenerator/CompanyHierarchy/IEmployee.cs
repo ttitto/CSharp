@@ -1,15 +1,9 @@
 ﻿namespace CompanyHierarchy
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    public interface IEmployee
+    public interface IEmployee : IPerson
     {
         decimal Salary { get; set; }
 
-        public Departments Department { get; set; }
+        Department Department { get; set; }
     }
 }

@@ -2,12 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using WordReportGenerator.DeleteMe;
+    using CompanyHierarchy;
     using Novacode;
 
     public static class DocumentGenerator
     {
-        public static string dirPath = "";
+        public static string dirPath = "../../Reports/";
 
         public static void GenerateReport(IEmployee employee)
         {

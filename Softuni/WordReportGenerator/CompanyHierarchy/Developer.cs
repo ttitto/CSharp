@@ -36,7 +36,7 @@
         public override string ToString()
         {
             string baseStr = base.ToString();
-            return baseStr + string.Format("\nProjects: ", string.Join("\n", this.Projects));
+            return baseStr + string.Format("\nProjects: \n{0}", string.Join("\n", this.Projects));
         }
     }
 }

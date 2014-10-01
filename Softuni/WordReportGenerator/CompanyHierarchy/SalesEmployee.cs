@@ -37,7 +37,7 @@
         public override string ToString()
         {
             string baseStr = base.ToString();
-            return baseStr + string.Format("\nSales: ", string.Join("\n", this.Sales));
+            return baseStr + string.Format("\nSales: \n{0}", string.Join("\n", this.Sales));
         }
     }
 }

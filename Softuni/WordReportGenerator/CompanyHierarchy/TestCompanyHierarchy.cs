@@ -101,7 +101,7 @@
         Department.Marketing,
         new List<IEmployee>() { pesho, gosho, marinka });
 
-        static IList<IEmployee> employees = new List<IEmployee>() { 
+        public static IList<IEmployee> employees = new List<IEmployee>() { 
             pesho, gosho, marinka, gergana, tsvetana, krastanka, petranka, donka, dimana, };
     }
 }

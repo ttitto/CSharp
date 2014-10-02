@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CompanyHierarchy;
 using WordReportGenerator;
+using DropNet;
+using System.IO;
+using DropNet.Models;
 
 namespace WordReportGeneratorUI
 {
@@ -107,6 +99,15 @@ namespace WordReportGeneratorUI
         public IEmployee GetEmployee(string id)
         {
             return TestCompanyHierarchy.employees.First<IEmployee>(emp => emp.Id == id);
+        }
+
+        private void ExportToDropbox(object sender, RoutedEventArgs e)
+        {
+            var client = new DropNetClient("flyxzhd2ts40zps", "0w9ucq9pqtambrj");
+            client.UserLogin = new UserLogin();
+
+            var fileBytes = File.ReadAllBytes(@"../../Reports/Donka-Karamanova-dk-Report.docx");
+            var uploadResult = client.UploadFilePUT("../../", "Donka-Karamanova-dk-Report_copy.docx", fileBytes);
         }
     }
 }

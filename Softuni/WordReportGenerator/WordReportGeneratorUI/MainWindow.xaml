@@ -7,7 +7,7 @@
             <StackPanel Name="topStack" Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Stretch" >
                 <Button MinWidth="198" Content="Import data" Click="ImportCompanyData"></Button>
                 <Button MinWidth="198" Content="Export to Word" Click="ExportCheckedReportsAsWord"></Button>
-                <Button MinWidth="198" Content="Export to Dropbox"></Button>
+                <Button MinWidth="198" Content="Export to Dropbox" Click="ExportToDropbox"></Button>
                 <Button MinWidth="198" Content="About"></Button>
             </StackPanel>
             <StackPanel Name="leftStack" DockPanel.Dock="Left" Orientation="Horizontal" HorizontalAlignment="Left">

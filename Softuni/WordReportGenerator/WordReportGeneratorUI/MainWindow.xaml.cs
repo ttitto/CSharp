@@ -107,7 +107,7 @@ namespace WordReportGeneratorUI
             client.UserLogin = new UserLogin();
 
             var fileBytes = File.ReadAllBytes(@"../../Reports/Donka-Karamanova-dk-Report.docx");
-            var uploadResult = client.UploadFilePUT("../../", "Donka-Karamanova-dk-Report_copy.docx", fileBytes);
+            var uploadResult = client.UploadFile("../../", "Donka-Karamanova-dk-Report_copy.docx", fileBytes);
         }
     }
 }

@@ -21,7 +21,7 @@
 
             List<Animal> animals = new List<Animal>()
             {
-                jaba, 
+                jaba,
                 kekerica,
                 sharo,
                 sara,
@@ -31,11 +31,12 @@
                 oldy
             };
             var groupedAnimals = from animal in animals
-                                 group animal by animal.GetType().Name into g
+                                 group animal by (animal is Cat)  ? typeof(Cat) : animal.GetType() into g
                                  select new { GroupName = g.Key, AverageAge = g.ToList().Average(an => an.Age) };
+
             foreach (var animal in groupedAnimals)
             {
-                Console.WriteLine("{0} - average age: {1:N2}", animal.GroupName, animal.AverageAge);
+                Console.WriteLine("{0} - average age: {1:N2}", animal.GroupName.Name, animal.AverageAge);
             }
 
             puhi.ProduceSound();

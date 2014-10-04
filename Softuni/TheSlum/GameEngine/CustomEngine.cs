@@ -5,6 +5,8 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using TheSlum.Characters;
+    using TheSlum.Items;
 
     public class CustomEngine : Engine
     {
@@ -40,11 +42,11 @@
                         inputParams[2],
                         int.Parse(inputParams[3]),
                         int.Parse(inputParams[4]),
-                        0,
-                        0,
-                        0,
+                        200,
+                        100,
+                        150,
                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
-                        0);
+                        2);
                     this.characterList.Add(newCharacter);
                     break;
 
@@ -53,11 +55,11 @@
                         inputParams[2],
                         int.Parse(inputParams[3]),
                         int.Parse(inputParams[4]),
-                        0,
-                        0,
-                        0,
+                        150,
+                        50,
+                        300,
                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
-                        0);
+                        5);
                     this.characterList.Add(newCharacter);
                     break;
 
@@ -66,17 +68,16 @@
                         inputParams[2],
                         int.Parse(inputParams[3]),
                         int.Parse(inputParams[4]),
-                        0,
-                        0,
-                        0,
+                        75,
+                        50,
+                        60,
                        (Team)Enum.Parse(typeof(Team), inputParams[5], true),
-                        0);
+                        6);
                     this.characterList.Add(newCharacter);
                     break;
                 default:
                     break;
             }
-
         }
 
         protected new void AddItem(string[] inputParams)

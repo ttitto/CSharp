@@ -1,8 +1,11 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.Characters
 {
     using System.Collections.Generic;
     using System.Linq;
+    using TheSlum;
     using TheSlum.Interfaces;
+    using TheSlum.Characters;
+    using TheSlum.Items;
 
     public class Healer : Character, IHeal
     {

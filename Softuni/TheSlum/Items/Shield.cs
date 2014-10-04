@@ -1,4 +1,4 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.Items
 {
     public class Shield : Item
     {

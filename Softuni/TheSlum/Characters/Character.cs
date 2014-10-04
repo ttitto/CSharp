@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TheSlum;
+using TheSlum.Items;
 
-namespace TheSlum
+namespace TheSlum.Characters
 {
     public abstract class Character : GameObject
     {

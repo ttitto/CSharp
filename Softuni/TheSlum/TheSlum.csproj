@@ -40,27 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bonus.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="GameEngine\Axe.cs" />
+    <Compile Include="Items\Bonus.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Items\Axe.cs" />
     <Compile Include="GameEngine\CustomEngine.cs" />
     <Compile Include="GameEngine\Engine.cs" />
-    <Compile Include="GameEngine\Shield.cs" />
+    <Compile Include="Items\Shield.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="Healer.cs" />
-    <Compile Include="Injection.cs" />
+    <Compile Include="Characters\Healer.cs" />
+    <Compile Include="Items\Injection.cs" />
     <Compile Include="Interfaces\IAttack.cs" />
     <Compile Include="Interfaces\IHeal.cs" />
     <Compile Include="Interfaces\ITimeoutable.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Mage.cs" />
-    <Compile Include="Pill.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Characters\Mage.cs" />
+    <Compile Include="Items\Pill.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Team.cs" />
-    <Compile Include="Warrior.cs" />
+    <Compile Include="Characters\Warrior.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="TheSlumDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,8 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.Items
 {
-    public class Injection : Bonus
+    public class Pill : Bonus
     {
-        public Injection(string id, int healthEffect = 200, int defenseEffect = 0, int attackEffect = 0)
+        public Pill(string id, int healthEffect = 0, int defenseEffect = 0, int attackEffect = 100)
             : base(id, healthEffect, defenseEffect, attackEffect)
         {
             this.Countdown = 3;

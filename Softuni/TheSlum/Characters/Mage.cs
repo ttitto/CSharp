@@ -1,12 +1,15 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.Characters
 {
     using System.Collections.Generic;
     using System.Linq;
     using TheSlum.Interfaces;
+    using TheSlum.Characters;
+    using TheSlum.Items;
+    using TheSlum;
 
-    public class Warrior : Character, IAttack
+    public class Mage : Character, IAttack
     {
-        public Warrior(string id, int x, int y, int healthPoints, int defensePoints, int attackPoints, Team team, int range)
+        public Mage(string id, int x, int y, int healthPoints, int defensePoints, int attackPoints, Team team, int range)
             : base(id, x, y, healthPoints, defensePoints, team, range)
         {
             this.AttackPoints = attackPoints;
@@ -16,7 +19,7 @@
 
         public override Character GetTarget(IEnumerable<Character> targetsList)
         {
-            var target = targetsList.FirstOrDefault(ch => (ch.Team != this.Team && ch.IsAlive));
+            var target = targetsList.LastOrDefault(ch => (ch.Team != this.Team && ch.IsAlive));
             return target;
         }
 

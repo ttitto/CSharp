@@ -1,8 +1,8 @@
-﻿using System;
-using TheSlum.Interfaces;
-
-namespace TheSlum
+﻿namespace TheSlum.Items
 {
+    using System;
+    using TheSlum.Interfaces;
+
     public abstract class Bonus : Item, ITimeoutable
     {
         protected Bonus(string id, int healthEffect, int defenseEffect, int attackEffect)

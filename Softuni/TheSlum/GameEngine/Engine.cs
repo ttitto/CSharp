@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheSlum.Interfaces;
+using TheSlum.Characters;
+using TheSlum.Items;
+using TheSlum;
 
 namespace TheSlum.GameEngine
 {

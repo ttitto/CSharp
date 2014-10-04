@@ -1,6 +1,7 @@
-﻿namespace TheSlum
+﻿namespace TheSlum.Items
 {
     using System;
+    using TheSlum;
 
     public abstract class Item : GameObject
     {

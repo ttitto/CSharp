@@ -4,7 +4,7 @@
     {
         private decimal netPurchaseAmount;
 
-        public Customer(string id, string firstName, string lastName)
+        public Customer(string id, string firstName, string lastName, decimal netPurchaseAmount)
             : base(id, firstName, lastName)
         {
             this.NetPurchaseAmount = netPurchaseAmount;

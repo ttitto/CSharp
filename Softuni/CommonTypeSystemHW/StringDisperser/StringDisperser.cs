@@ -54,12 +54,12 @@
 
         public static bool operator ==(StringDisperser first, StringDisperser second)
         {
-            return first.Equals(second);
+            return Object.Equals(first, second);
         }
 
         public static bool operator !=(StringDisperser first, StringDisperser second)
         {
-            return !first.Equals(second);
+            return !Object.Equals(first, second);
         }
 
         public override int GetHashCode()

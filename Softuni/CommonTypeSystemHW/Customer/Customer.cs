@@ -203,12 +203,12 @@
 
         public static bool operator ==(Customer firstCustomer, Customer secondCustomer)
         {
-            return firstCustomer.Equals(secondCustomer);
+            return Object.Equals(firstCustomer, secondCustomer);
         }
 
         public static bool operator !=(Customer firstCustomer, Customer secondCustomer)
         {
-            return !firstCustomer.Equals(secondCustomer);
+            return !Object.Equals(firstCustomer, secondCustomer);
         }
 
         public object Clone()

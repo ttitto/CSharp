@@ -59,7 +59,7 @@
                 }
                 else
                 {
-                    throw new StackOverflowException();
+                    throw new InvalidOperationException("Invalid command name.");
                 }
             }
 
@@ -109,88 +109,32 @@
             }
         }
 
-        private static string ConverToCanonicalPhoneNumber(string phoneNumberInput)
+        public static string ConverToCanonicalPhoneNumber(string phoneNumberInput)
         {
-            // TODO: Write unit test for this method and try to refactor
             StringBuilder canonicalPhoneNumber = new StringBuilder();
-            for (int i = 0; i <= output.Length; i++)
+
+            foreach (char symbol in phoneNumberInput)
             {
-                canonicalPhoneNumber.Clear();
-                foreach (char symbol in phoneNumberInput)
+                if (char.IsDigit(symbol) || (symbol == '+'))
                 {
-                    if (char.IsDigit(symbol) || (symbol == '+'))
-                    {
-                        canonicalPhoneNumber.Append(symbol);
-                    }
+                    canonicalPhoneNumber.Append(symbol);
                 }
+            }
 
-                if (canonicalPhoneNumber.Length >= 2 && canonicalPhoneNumber[0] == '0' && canonicalPhoneNumber[1] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                    canonicalPhoneNumber[0] = '+';
-                }
+            if (canonicalPhoneNumber.Length >= 2 && canonicalPhoneNumber[0] == '0' && canonicalPhoneNumber[1] == '0')
+            {
+                canonicalPhoneNumber.Remove(0, 1);
+                canonicalPhoneNumber[0] = '+';
+            }
 
-                while (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                }
+            while (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] == '0')
+            {
+                canonicalPhoneNumber.Remove(0, 1);
+            }
 
-                if (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] != '+')
-                {
-                    canonicalPhoneNumber.Insert(0, DefaultCountryCode);
-                }
-
-                canonicalPhoneNumber.Clear();
-
-                foreach (char symbol in phoneNumberInput)
-                {
-                    if (char.IsDigit(symbol) || (symbol == '+'))
-                    {
-                        canonicalPhoneNumber.Append(symbol);
-                    }
-                }
-
-                if (canonicalPhoneNumber.Length >= 2 && canonicalPhoneNumber[0] == '0' && canonicalPhoneNumber[1] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                    canonicalPhoneNumber[0] = '+';
-                }
-
-                while (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                }
-
-                if (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] != '+')
-                {
-                    canonicalPhoneNumber.Insert(0, DefaultCountryCode);
-                }
-
-                canonicalPhoneNumber.Clear();
-
-                foreach (char ch in phoneNumberInput)
-                {
-                    if (char.IsDigit(ch) || (ch == '+'))
-                    {
-                        canonicalPhoneNumber.Append(ch);
-                    }
-                }
-
-                if (canonicalPhoneNumber.Length >= 2 && canonicalPhoneNumber[0] == '0' && canonicalPhoneNumber[1] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                    canonicalPhoneNumber[0] = '+';
-                }
-
-                while (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] == '0')
-                {
-                    canonicalPhoneNumber.Remove(0, 1);
-                }
-
-                if (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] != '+')
-                {
-                    canonicalPhoneNumber.Insert(0, DefaultCountryCode);
-                }
+            if (canonicalPhoneNumber.Length > 0 && canonicalPhoneNumber[0] != '+')
+            {
+                canonicalPhoneNumber.Insert(0, DefaultCountryCode);
             }
 
             return canonicalPhoneNumber.ToString();
@@ -198,7 +142,7 @@
 
         private static void Print(string text)
         {
-            output.AppendLine(text);
+            Console.WriteLine(text);
         }
     }
 }

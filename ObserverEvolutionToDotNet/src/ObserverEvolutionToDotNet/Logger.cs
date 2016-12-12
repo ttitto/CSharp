@@ -4,9 +4,9 @@
 
     public class Logger : IObserver
     {
-        public void Update()
+        public void Update(ISubject sender)
         {
-            Console.WriteLine("Writing down.");
+            Console.WriteLine($"Writing down.{sender.Data.ToUpper()}");
         }
     }
 }

@@ -7,6 +7,8 @@
     {
         private List<IObserver> observers = new List<IObserver>();
 
+        public string Data { get; private set; }
+
         public void Attach(IObserver observer)
         {
             this.observers.Add(observer);
@@ -19,7 +21,7 @@
 
         public void DoSomethingWith(string data)
         {
-            Console.WriteLine($"Doing something with {data}.");
+            this.Data = data;
             this.Notify();
         }
 
@@ -27,7 +29,7 @@
         {
             foreach (IObserver observer in this.observers)
             {
-                observer.Update();
+                observer.Update(this);
             }
         }
     }

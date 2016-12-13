@@ -21,15 +21,14 @@
 
         public void DoSomethingWith(string data)
         {
-            this.Data = data;
-            this.Notify();
+            this.Notify(data);
         }
 
-        public void Notify()
+        public void Notify(string data)
         {
             foreach (IObserver observer in this.observers)
             {
-                observer.Update(this);
+                observer.Update(this, data);
             }
         }
     }

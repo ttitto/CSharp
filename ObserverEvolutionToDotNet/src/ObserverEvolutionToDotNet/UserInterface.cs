@@ -4,9 +4,9 @@
 
     public class UserInterface : IObserver
     {
-        public void Update(ISubject sender)
+        public void Update(ISubject sender, string data)
         {
-            Console.WriteLine($"Hey user, look at this. {sender.Data.ToUpper()}");
+            Console.WriteLine($"Hey user, look at this. {data.ToUpper()}");
         }
     }
 }

@@ -4,6 +4,7 @@
     {
         void Attach(IObserver observer);
         void Detach(IObserver observer);
-        void Notify(string data);
+        void AfterDoSomethingWith(string data);
+        void AfterDoMore(string completeData, string appendedData);
     }
 }

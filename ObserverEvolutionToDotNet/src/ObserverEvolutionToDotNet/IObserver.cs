@@ -2,6 +2,7 @@
 {
     public interface IObserver
     {
-        void Update(ISubject sender, string data);
+        void AfterDoSomethingWith(ISubject sender, string data);
+        void AfterDoMore(ISubject sender, string completeData, string appendedData);
     }
 }

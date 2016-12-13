@@ -6,8 +6,7 @@
     public class Doer : ISubject
     {
         private List<IObserver> observers = new List<IObserver>();
-
-        public string Data { get; private set; }
+        private string data = string.Empty;
 
         public void Attach(IObserver observer)
         {
@@ -21,14 +20,28 @@
 
         public void DoSomethingWith(string data)
         {
-            this.Notify(data);
+            this.data = data;
+            this.AfterDoSomethingWith(data);
         }
 
-        public void Notify(string data)
+        public void DoMore(string appendData)
+        {
+            this.data += appendData;
+        }
+
+        public void AfterDoSomethingWith(string data)
         {
             foreach (IObserver observer in this.observers)
             {
-                observer.Update(this, data);
+                observer.AfterDoSomethingWith(this, data);
+            }
+        }
+
+        public void AfterDoMore(string completeData, string appendedData)
+        {
+            foreach (IObserver observer in this.observers)
+            {
+                observer.AfterDoMore(this, completeData  , appendedData);
             }
         }
     }

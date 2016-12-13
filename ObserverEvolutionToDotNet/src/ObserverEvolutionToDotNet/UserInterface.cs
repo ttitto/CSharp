@@ -4,9 +4,14 @@
 
     public class UserInterface : IObserver
     {
-        public void Update(ISubject sender, string data)
+        public void AfterDoMore(ISubject sender, string completeData, string appendedData)
         {
-            Console.WriteLine($"Hey user, look at this. {data.ToUpper()}");
+            Console.WriteLine($"Hey user, look at this. {completeData + appendedData}");
+        }
+
+        public void AfterDoSomethingWith(ISubject sender, string data)
+        {
+            // user interface is not interested on this notification
         }
     }
 }

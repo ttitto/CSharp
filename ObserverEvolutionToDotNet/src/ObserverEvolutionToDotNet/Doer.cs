@@ -3,45 +3,37 @@
     using System;
     using System.Collections.Generic;
 
-    public class Doer : ISubject
+    public class Doer 
     {
-        private List<IObserver> observers = new List<IObserver>();
+        public MulticastNotifier<string> AfterDoSomethingWith;
+        public MulticastNotifier<Tuple<string, string>> AfterDoMore;
         private string data = string.Empty;
-
-        public void Attach(IObserver observer)
-        {
-            this.observers.Add(observer);
-        }
-
-        public void Detach(IObserver observer)
-        {
-            this.observers.Remove(observer);
-        }
 
         public void DoSomethingWith(string data)
         {
             this.data = data;
-            this.AfterDoSomethingWith(data);
+            OnAfterDoSomethingWith(this.data);
         }
 
         public void DoMore(string appendData)
         {
             this.data += appendData;
+            OnAfterDoMore(this.data, appendData);
         }
 
-        public void AfterDoSomethingWith(string data)
+        private void OnAfterDoSomethingWith(string data)
         {
-            foreach (IObserver observer in this.observers)
+            if (this.AfterDoSomethingWith != null)
             {
-                observer.AfterDoSomethingWith(this, data);
+                this.AfterDoSomethingWith.Notify(this, data);
             }
         }
 
-        public void AfterDoMore(string completeData, string appendedData)
+        private void OnAfterDoMore(string completeData, string appendedData)
         {
-            foreach (IObserver observer in this.observers)
+            if (this.AfterDoMore != null)
             {
-                observer.AfterDoMore(this, completeData  , appendedData);
+                this.AfterDoMore.Notify(this, Tuple.Create(completeData, appendedData));
             }
         }
     }

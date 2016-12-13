@@ -7,9 +7,17 @@
         public static void Main(string[] args)
         {
             var doer = new Doer();
-            doer.Attach(new UserInterface());
-            doer.Attach(new Logger());
+
+            var userInterface = new UserInterface();
+            var logger = new Logger();
+
+            doer.AfterDoSomethingWith += userInterface.AfterDoSomethingWith;
+            doer.AfterDoSomethingWith += logger.AfterDoSomethingWith;
+
+            doer.AfterDoMore += logger.AfterDoMore;
+
             doer.DoSomethingWith("my data");
+            doer.DoMore("tail");
             Console.ReadLine();
         }
     }

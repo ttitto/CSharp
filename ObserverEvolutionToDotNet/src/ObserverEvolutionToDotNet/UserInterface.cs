@@ -2,16 +2,20 @@
 {
     using System;
 
-    public class UserInterface : IObserver
+    public class UserInterface
     {
-        public void AfterDoMore(ISubject sender, string completeData, string appendedData)
+        public readonly IObserver<string> AfterDoSomethingWith;
+        public UserInterface()
         {
-            Console.WriteLine($"Hey user, look at this. {completeData + appendedData}");
+            this.AfterDoSomethingWith = new NotificationSink<string>((sender, data) =>
+            {
+                this.AfterDoSomethingWithHandler(sender, data);
+            });
         }
 
-        public void AfterDoSomethingWith(ISubject sender, string data)
+        private void AfterDoSomethingWithHandler(object sender, string data)
         {
-            // user interface is not interested on this notification
+            Console.WriteLine($"Hey user, look at {data.ToUpper()}");
         }
     }
 }

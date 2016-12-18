@@ -3,9 +3,15 @@
     using System;
     using Common;
 
-    public class Bearded : IBearded
+    public class Bearded : ChainElement, IBearded
     {
         private readonly string owner;
+
+        public Bearded(string owner, IChainElement next)
+            : base(next)
+        {
+            this.owner = owner;
+        }
 
         public Bearded(string owner)
         {

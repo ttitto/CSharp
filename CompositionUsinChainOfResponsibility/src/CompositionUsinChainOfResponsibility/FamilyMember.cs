@@ -1,27 +1,20 @@
 ﻿namespace CompositionUsinChainOfResponsibility
 {
     using System.Collections.Generic;
+    using Common;
 
     public class FamilyMember
     {
-        private readonly IEnumerable<object> parts;
+        private readonly ChainElement components;
 
-        public FamilyMember(IEnumerable<object> parts)
+        public FamilyMember(ChainElement components)
         {
-            this.parts = new List<object>(parts);
+            this.components = components;
         }
 
-        public T As<T>()
+        public T As<T>(T defaultValue) where T : class
         {
-            foreach (object part in this.parts)
-            {
-                if (part is T)
-                {
-                    return (T)part;
-                }
-            }
-
-            return default(T);
+            return this.components.As<T>(defaultValue);
         }
     }
 }

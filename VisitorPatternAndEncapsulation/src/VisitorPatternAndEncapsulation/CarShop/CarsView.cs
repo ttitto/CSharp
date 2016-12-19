@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class CarsView
     {
@@ -16,7 +17,7 @@
         {
             foreach (Car car in this.cars)
             {
-                Console.WriteLine($"{car.Make} {car.Model} {car.Engine.CylinderVolume}cc {car.Engine.Power}kW");
+                Console.WriteLine($"{car.Make} {car.Model} {car.Engine.CylinderVolume}cc {car.Engine.Power}kW seat(s) {car.Seats.Sum(seat => seat.Capacity)}");
             }
         }
     }

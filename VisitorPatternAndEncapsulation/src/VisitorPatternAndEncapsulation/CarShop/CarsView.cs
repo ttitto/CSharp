@@ -15,10 +15,10 @@
 
         public void Render()
         {
-            foreach (Car car in this.cars)
-            {
-                Console.WriteLine($"{car.Make} {car.Model} {car.Engine.CylinderVolume}cc {car.Engine.Power}kW seat(s) {car.Seats.Sum(seat => seat.Capacity)}");
-            }
+            //foreach (Car car in this.cars)
+            //{
+            //    Console.WriteLine($"{car.make} {car.model} {car.Engine.CylinderVolume}cc {car.Engine.Power}kW seat(s) {car.seats.Sum(seat => seat.Capacity)}");
+            //}
         }
     }
 }

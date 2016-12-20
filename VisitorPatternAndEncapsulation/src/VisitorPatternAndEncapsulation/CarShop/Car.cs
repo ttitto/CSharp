@@ -1,20 +1,27 @@
 ﻿namespace VisitorPatternAndEncapsulation.CarShop
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Car
     {
-        public string Make { get; private set; }
-        public string Model { get; private set; }
-        public Engine Engine { get; private set; }
-        public IEnumerable<Seat> Seats { get; private set; }
+        private readonly string make;
+        private readonly string model;
+        private readonly Engine engine;
+        private readonly IEnumerable<Seat> seats;
 
         public Car(string make, string model, Engine engine, IEnumerable<Seat> seats)
         {
-            this.Make = make;
-            this.Model = model;
-            this.Engine = engine;
-            this.Seats = new List<Seat>(seats);
+            this.make = make;
+            this.model = model;
+            this.engine = engine;
+            this.seats = new List<Seat>(seats);
         }
+
+        public CarRegistration Register()
+        {
+            return new CarRegistration(this.make.ToUpper(), this.model, this.engine.CylinderVolume, this.seats.Sum(seat => seat.Capacity));
+        }
+
     }
 }

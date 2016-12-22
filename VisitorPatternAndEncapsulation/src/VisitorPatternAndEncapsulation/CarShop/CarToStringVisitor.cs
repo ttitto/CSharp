@@ -4,27 +4,28 @@ namespace VisitorPatternAndEncapsulation.CarShop
 {
     public class CarToStringVisitor : ICarVisitor
     {
-        private string report;
         private int seatCount;
+        private string engineDetails;
+        private string carDetails;
 
         public string GetCarDescription()
         {
-            return this.report + $", {this.seatCount} seats";
+            return $"{this.carDetails} {this.engineDetails} {this.seatCount} seat(s)";
         }
 
         public void VisitCar(string make, string model)
         {
-            this.report += $"{make} {model}";
+            this.carDetails = $"{make} {model}";
         }
 
-        public void Visit(Seat seat)
+        public void VisitSeat(string name, int capacity)
         {
-            this.seatCount += seat.Capacity;
+            this.seatCount += capacity;
         }
 
-        public void Visit(Engine engine)
+        public void VisitEngine(float power, float cylinderVolume, float temperatureC)
         {
-            this.report += $"{engine.CylinderVolume}cc {engine.Power}kW";
+            this.engineDetails += $"{cylinderVolume}cc {power}kW";
         }
     }
 }

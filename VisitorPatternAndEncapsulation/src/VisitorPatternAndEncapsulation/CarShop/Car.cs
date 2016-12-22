@@ -20,7 +20,9 @@
 
         public CarRegistration Register()
         {
-            return new CarRegistration(this.make.ToUpper(), this.model, this.engine.CylinderVolume, this.seats.Sum(seat => seat.Capacity));
+            // TODO: apply new visitor to do the car registration
+            //return new CarRegistration(this.make.ToUpper(), this.model, this.engine.cylinderVolume, this.seats.Sum(seat => seat.capacity));
+            return null;
         }
 
         public void Accept(ICarVisitor visitor)

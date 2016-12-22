@@ -23,5 +23,14 @@
             return new CarRegistration(this.make.ToUpper(), this.model, this.engine.CylinderVolume, this.seats.Sum(seat => seat.Capacity));
         }
 
+        public void Accept(ICarVisitor visitor)
+        {
+            visitor.VisitCar(this.make, this.model);
+            this.engine.Accept(visitor);
+            foreach (Seat seat in this.seats)
+            {
+                seat.Accept(visitor);
+            }
+        }
     }
 }

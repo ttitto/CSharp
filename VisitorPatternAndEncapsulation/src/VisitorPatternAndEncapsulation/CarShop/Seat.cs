@@ -37,5 +37,10 @@
                 };
             }
         }
+
+        public void Accept(ICarVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

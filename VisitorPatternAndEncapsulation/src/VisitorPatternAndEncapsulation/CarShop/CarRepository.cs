@@ -1,4 +1,4 @@
-﻿namespace VisitorPatternAndEncapsulation
+﻿namespace VisitorPatternAndEncapsulation.CarShop
 {
     using System.Collections.Generic;
     using CarShop;

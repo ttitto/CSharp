@@ -23,9 +23,9 @@ namespace VisitorPatternAndEncapsulation.CarShop
             this.seatCount += capacity;
         }
 
-        public void VisitEngine(float power, float cylinderVolume, float temperatureC)
+        public void VisitEngine(EngineStructure structure, EngineStatus status)
         {
-            this.engineDetails += $"{cylinderVolume}cc {power}kW";
+            this.engineDetails += $"{structure.CylinderVolume}cc {structure.Power}kW";
         }
     }
 }

@@ -21,7 +21,9 @@
 
         public void Accept(ICarVisitor visitor)
         {
-            visitor.VisitEngine(this.power, this.cylinderVolume, this.temperitureC);
+            EngineStructure structure = new EngineStructure(this.power, this.cylinderVolume);
+            EngineStatus status = new EngineStatus(this.temperitureC, 0);
+            visitor.VisitEngine(structure, status);
         }
 
         public void Run(TimeSpan time)

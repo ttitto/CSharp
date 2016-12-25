@@ -9,7 +9,7 @@
     {
         public static void Main(string[] args)
         {
-            //IEnumerable<Car> cars = new CarRepository().GetAll();
+            IEnumerable<Car> cars = new CarRepository().GetAll();
             //CarsView view = new CarsView(cars);
             //view.Render();
 
@@ -17,11 +17,16 @@
             //CarRegistration registration = car.Register();
             //Console.WriteLine(registration);
 
-            Car car = new CarRepository().GetAll().Last();
-            car.Accept(() => new SaveCarVisitor());
+            //Car car = new CarRepository().GetAll().Last();
+            //car.Accept(() => new SaveCarVisitor());
 
             //CarRegistration registration1 = new CarRegistration(car.make, car.model, car.Engine.CylinderVolume, car.seats.Sum(seat => seat.Capacity));
             //Console.WriteLine(registration1);
+
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car.Register());
+            }
 
             Console.WriteLine("Press ENTER to exit...");
             Console.ReadLine();

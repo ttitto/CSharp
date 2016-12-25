@@ -20,20 +20,19 @@
 
         public CarRegistration Register()
         {
-            // TODO: apply new visitor to do the car registration
-            //return new CarRegistration(this.make.ToUpper(), this.model, this.engine.cylinderVolume, this.seats.Sum(seat => seat.capacity));
-            return null;
+            return new CarRegistrationBuilder(this).ProduceResult();
         }
 
         public void Accept(Func<ICarVisitor> visitorFactory)
         {
             ICarVisitor visitor = visitorFactory();
-            visitor.VisitCar(this.make, this.model);
             this.engine.Accept(() => visitor);
             foreach (Seat seat in this.seats)
             {
                 seat.Accept(() => visitor);
             }
+
+            visitor.VisitCar(this.make, this.model);
         }
 
         public T Accept<T>(Func<ICarVisitor<T>> visitorFactory)

@@ -1,5 +1,6 @@
 ﻿namespace VisitorPatternAndEncapsulation.CarShop
 {
+    using System;
     using System.Collections.Generic;
 
     public class Seat
@@ -36,9 +37,9 @@
             }
         }
 
-        public void Accept(ICarVisitor visitor)
+        public void Accept(Func<ICarVisitor> visitorFactory)
         {
-            visitor.VisitSeat(this.name, this.capacity);
+            visitorFactory().VisitSeat(this.name, this.capacity);
         }
     }
 }

@@ -1,9 +1,6 @@
 ﻿namespace VisitorPatternAndEncapsulation.CarShop
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class Engine
     {
@@ -19,11 +16,11 @@
             this.cylinderVolume = cylinderVolume;
         }
 
-        public void Accept(ICarVisitor visitor)
+        public void Accept(Func<ICarVisitor > visitorFactory)
         {
             EngineStructure structure = new EngineStructure(this.power, this.cylinderVolume);
             EngineStatus status = new EngineStatus(this.temperitureC, 0);
-            visitor.VisitEngine(structure, status);
+            visitorFactory().VisitEngine(structure, status);
         }
 
         public void Run(TimeSpan time)

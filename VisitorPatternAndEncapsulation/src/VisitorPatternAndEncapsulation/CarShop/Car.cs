@@ -1,5 +1,6 @@
 ﻿namespace VisitorPatternAndEncapsulation.CarShop
 {
+    using System;
     using System.Collections.Generic;
 
     public class Car
@@ -24,13 +25,14 @@
             return null;
         }
 
-        public void Accept(ICarVisitor visitor)
+        public void Accept(Func<ICarVisitor> visitorFactory)
         {
+            ICarVisitor visitor = visitorFactory();
             visitor.VisitCar(this.make, this.model);
-            this.engine.Accept(visitor);
+            this.engine.Accept(() => visitor);
             foreach (Seat seat in this.seats)
             {
-                seat.Accept(visitor);
+                seat.Accept(() => visitor);
             }
         }
     }

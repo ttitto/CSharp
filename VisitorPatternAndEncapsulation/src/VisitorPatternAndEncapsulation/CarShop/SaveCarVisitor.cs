@@ -1,40 +1,73 @@
-﻿namespace VisitorPatternAndEncapsulation.CarShop
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
 
+namespace VisitorPatternAndEncapsulation.CarShop
+{
     public class SaveCarVisitor : ICarVisitor
     {
+        private CarPersistance carPersistance = new CarPersistance();
         private int carId;
+        private string make;
+        private string model;
+        private float power;
+        private float cylinderVolume;
+        private Queue<Tuple<string, int>> seats = new Queue<Tuple<string, int>>();
 
         public void VisitCar(string make, string model)
         {
-            Console.WriteLine("INSERT INTO CarShop.Car(Make, Model)\n" +
-                "VALUES ('{0}', '{1}');\n" +
-                "SELECT SCOPE_IDENTITY",
-                make, model);
-
-            this.carId = new Random().Next(100);
-            Console.WriteLine("CarId = {0}", this.carId);
-            Console.WriteLine();
+            this.make = make;
+            this.model = model;
+            this.ProcessQueue();
         }
 
         public void VisitEngine(EngineStructure structure, EngineStatus status)
         {
-            Console.WriteLine("INSERT INTO CarShop.Engine(CarId, Power, CylinderVolume)\n" +
-                "VALUES({0}, {1}, {2})",
-                this.carId, structure.Power, structure.CylinderVolume);
-            Console.WriteLine();
+            this.power = structure.Power;
+            this.cylinderVolume = structure.CylinderVolume;
+            this.ProcessQueue();
         }
 
         public void VisitSeat(string name, int capacity)
         {
-            Console.WriteLine("INSERT INTO CarShop.Seat(CarId, Name, Capacity)\n" +
-                "VALUES ({0}, {1}, {2})",
-                this.carId, name, capacity);
-            Console.WriteLine();
+            this.seats.Enqueue(new Tuple<string, int>(name, capacity));
+            this.ProcessQueue();
+        }
+
+        private void ProcessQueue()
+        {
+            this.SaveCar();
+            this.SaveEngine();
+            this.SaveSeats();
+        }
+
+        private void SaveCar()
+        {
+            if (this.carId == 0 && this.make != null)
+            {
+                this.carId = this.carPersistance.InsertCar(this.make, this.model);
+            }
+        }
+
+        private void SaveEngine()
+        {
+            if (this.carId > 0 && this.power > 0)
+            {
+                this.carPersistance.InsertEngine(this.carId, this.power, this.cylinderVolume);
+                this.power = 0;
+            }
+        }
+
+        private void SaveSeats()
+        {
+            if (this.carId > 0)
+            {
+                while (this.seats.Count > 0)
+                {
+                    Tuple<string, int> seat = this.seats.Dequeue();
+                    this.carPersistance.InsertSeat(this.carId, seat.Item1, seat.Item2);
+
+                }
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Car
+    public class Car : ICar
     {
         private readonly string make;
         private readonly string model;
@@ -34,6 +34,13 @@
             {
                 seat.Accept(() => visitor);
             }
+        }
+
+        public T Accept<T>(Func<ICarVisitor<T>> visitorFactory)
+        {
+            ICarVisitor<T> visitor = visitorFactory();
+            this.Accept(() => (ICarVisitor)visitor);
+            return visitor.ProduceResult();
         }
     }
 }

@@ -17,8 +17,8 @@
         {
             foreach (Car car in this.cars)
             {
-                car.Accept(() => new CarToStringVisitor());
-                //Console.WriteLine(carToStringVisitor.GetCarDescription());
+                string report = car.Accept(() => new CarToStringVisitor());
+                Console.WriteLine(report);
             }
         }
     }

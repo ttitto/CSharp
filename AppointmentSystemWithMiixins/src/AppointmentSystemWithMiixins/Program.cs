@@ -6,7 +6,7 @@
     {
         public static void Main(string[] args)
         {
-            DomainService domain = new DomainService(new DataService());
+            DomainService domain = new DomainService(new UserFactory(new DataService()));
             IUser user = domain.RegisterUser("zoranh", "magicWord");
             Console.WriteLine($"{user}\n");
 

@@ -2,11 +2,11 @@
 {
     public class DomainService
     {
-        private readonly DataService dataService;
+        private readonly IUserFactory userFactory;
 
-        public DomainService(DataService dataService)
+        public DomainService(IUserFactory userFactory)
         {
-            this.dataService = dataService;
+            this.userFactory = userFactory;
         }
 
         public IUser RegisterUser(string name, string password)
@@ -25,8 +25,8 @@
 
         private IRegistrantUser CreateUser(string name, string password)
         {
-            IUser user = new User(name);
-            return new PersistableUser(user, this.dataService, password);
+            IUser user = this.userFactory.CreateUser(name);
+            return this.userFactory.CreateRegistrantUser(user, password);
         }
     }
 }

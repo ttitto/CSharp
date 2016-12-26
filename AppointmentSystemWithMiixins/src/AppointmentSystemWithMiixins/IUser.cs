@@ -1,9 +1,10 @@
-﻿using System;
-
-namespace AppointmentSystemWithMiixins
+﻿namespace AppointmentSystemWithMiixins
 {
+    using System;
+
     public interface IUser
     {
-        IApointment MakeAppointment(DateTime startTime);
+        IAppointment MakeAppointment(DateTime startTime);
+        void Accept(Func<IUserVisitor> visitorFactory);
     }
 }

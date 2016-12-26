@@ -1,6 +1,6 @@
 ﻿namespace AppointmentSystemWithMiixins
 {
-    public interface IApointment
+    public interface IAppointment
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AppointmentSystemWithMiixins
 {
-    public class Meeting: IApointment
+    public class Meeting: IAppointment
     {
         private DateTime startTime;
         private TimeSpan timeSpan;
@@ -11,6 +11,11 @@ namespace AppointmentSystemWithMiixins
         {
             this.startTime = startTime;
             this.timeSpan = timeSpan;
+        }
+
+        public override string ToString()
+        {
+            return $"Meeting starting at {this.startTime}, taking {this.timeSpan} min.";
         }
     }
 }

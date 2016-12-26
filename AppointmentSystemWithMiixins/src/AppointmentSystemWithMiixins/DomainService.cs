@@ -1,10 +1,5 @@
 ﻿namespace AppointmentSystemWithMiixins
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     public class DomainService
     {
         private readonly DataService dataService;
@@ -16,14 +11,22 @@
 
         public IUser RegisterUser(string name, string password)
         {
-            this.dataService.RegisterUser(name, password);
-            return new User(name, password);
+            IRegistrantUser user = this.CreateUser(name, password);
+            user.Register();
+            return user;
         }
 
         public IUser ChangePassword(string name, string password, string newPassword)
         {
-            this.dataService.ChangePassword(name, password, newPassword);
-            return new User(name, newPassword);
+            IRegistrantUser user = this.CreateUser(name, password);
+            user.ChangePassword(newPassword);
+            return user;
+        }
+
+        private IRegistrantUser CreateUser(string name, string password)
+        {
+            IUser user = new User(name);
+            return new PersistableUser(user, this.dataService, password);
         }
     }
 }

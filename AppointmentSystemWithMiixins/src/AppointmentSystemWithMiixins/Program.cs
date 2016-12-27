@@ -1,9 +1,26 @@
 ﻿namespace AppointmentSystemWithMiixins
 {
     using System;
+    using System.Collections.Generic;
 
     public class Program
     {
+        static void MassRegister(IEnumerable<IRegistrant> registrants)
+        {
+            foreach (IRegistrant registrant in registrants)
+            {
+                registrant.Register();
+            }
+        }
+
+        static void ScramblePasswords(IEnumerable<IRegistrant> registrants)
+        {
+            foreach (IRegistrant registrant in registrants)
+            {
+                registrant.ChangePassword(Guid.NewGuid().ToString().Substring(0, 6));
+            }
+        }
+
         public static void Main(string[] args)
         {
             DomainService domain = new DomainService(new UserFactory(new DataService()));
@@ -27,6 +44,16 @@
 
             IRegistrantGroup regGroup = new RegistrantGroup(group, "friends", "secret");
             regGroup.Register();
+
+            DataService service = new DataService();
+            IEnumerable<IRegistrant> registrants = new IRegistrant[] {
+                new PersistableUser(jill, service, "pwd"),
+                new PersistableUser(jack, service, "pwd"),
+                new PersistableUser(joe, service, "pwd"),
+                new RegistrantGroup(group, "friends", "secret")
+            };
+            // MassRegister(registrants);
+            ScramblePasswords(registrants);
 
             Console.ReadLine();
         }

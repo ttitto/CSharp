@@ -4,16 +4,17 @@
 
     internal class Account
     {
-        private bool IsVerified { get; set; }
-        private bool IsClosed { get; set; }
-        private bool IsFrozen { get; set; }
-        private Action OnUnfreeze { get; }
-        public decimal Balance { get; private set; }
-
         public Account(Action onUnfreeze)
         {
             this.OnUnfreeze = onUnfreeze;
+
+            this.ManageUnfreezing = this.StayUnfrozen;
         }
+
+        private bool IsVerified { get; set; }
+        private bool IsClosed { get; set; }
+        private Action OnUnfreeze { get; }
+        public decimal Balance { get; private set; }
 
         public void Deposit(decimal amount)
         {
@@ -22,12 +23,7 @@
                 return;
             }
 
-            if (this.IsFrozen)
-            {
-                this.IsFrozen = false;
-                this.OnUnfreeze();
-            }
-
+            ManageUnfreezing();
             this.Balance += amount;
         }
 
@@ -42,6 +38,7 @@
                 return;
             }
 
+            this.ManageUnfreezing();
             this.Balance -= amount;
         }
 
@@ -67,7 +64,18 @@
                 return;
             }
 
-            this.IsFrozen = true;
+            this.ManageUnfreezing = this.Unfreeze;
         }
+
+        private Action ManageUnfreezing { get; set; }
+
+
+        private void Unfreeze()
+        {
+            this.OnUnfreeze();
+            this.ManageUnfreezing = this.StayUnfrozen;
+        }
+
+        private void StayUnfrozen() { }
     }
 }

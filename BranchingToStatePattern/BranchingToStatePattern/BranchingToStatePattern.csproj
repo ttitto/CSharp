@@ -44,6 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Active.cs" />
+    <Compile Include="Closed.cs" />
+    <Compile Include="Frozen.cs" />
+    <Compile Include="IFreezable.cs" />
+    <Compile Include="NotVerified.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

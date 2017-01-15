@@ -22,6 +22,6 @@
             }
         }
 
-        public bool IsValidOn(DateTime date) => false;
+        public void Claim(DateTime onDate, Action onValidClaim) { }
     }
 }

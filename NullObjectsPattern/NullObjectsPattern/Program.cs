@@ -8,15 +8,8 @@
         static void ClaimWarranty(SoldArticle article)
         {
             DateTime now = DateTime.Now;
-            if (article.MoneyBackGuarantee.IsValidOn(now))
-            {
-                Console.WriteLine("Offer money back.");
-            }
-
-            if (article.ExpressWarranty.IsValidOn(now))
-            {
-                Console.WriteLine("Offer repair.");
-            }
+            article.MoneyBackGuarantee.Claim(now, () => Console.WriteLine("Offer money back."));
+            article.ExpressWarranty.Claim(now, () => Console.WriteLine("Offer repair."));
         }
 
         static void Main(string[] args)
@@ -27,7 +20,7 @@
 
             IWarranty moneyBack = new TimeLimitedWarranty(sellingDate, moneyBackSpan);
             IWarranty warranty = new TimeLimitedWarranty(sellingDate, warrantySpan);
-            
+
             SoldArticle goods = new SoldArticle(VoidWarranty.Instance, warranty);
 
             ClaimWarranty(goods);

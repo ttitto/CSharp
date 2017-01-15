@@ -8,22 +8,14 @@ namespace PreferImmutableObjects
 
         static MoneyAmount Reserve(MoneyAmount cost)
         {
-            MoneyAmount newCost;
+            decimal factor = 1;
             if (IsHappyHour)
             {
-                newCost = new MoneyAmount()
-                {
-                    Amount = cost.Amount * 0.5M,
-                    CurrencySymbol = cost.CurrencySymbol
-                };
-            }
-            else
-            {
-                newCost = cost;
+                factor = 0.5M;
             }
 
             Console.WriteLine("\nReserving an item that costs {0}", cost);
-            return newCost;
+            return cost.Scale(factor);
         }
 
         static void Buy(MoneyAmount wallet, MoneyAmount cost)
@@ -32,7 +24,7 @@ namespace PreferImmutableObjects
             MoneyAmount finalCost = Reserve(cost);
             bool finalEnough = wallet.Amount >= finalCost.Amount;
 
-            if (enounghMoney  && finalEnough)
+            if (enounghMoney && finalEnough)
             {
                 Console.WriteLine("You will pay {0} with your {1}", cost, wallet);
             }
@@ -48,15 +40,15 @@ namespace PreferImmutableObjects
 
         static void Main(string[] args)
         {
-            Buy(new MoneyAmount() { Amount = 12, CurrencySymbol = "USD" },
-                new MoneyAmount() { Amount = 10, CurrencySymbol = "USD" });
-            Buy(new MoneyAmount() { Amount = 7, CurrencySymbol = "USD" },
-                new MoneyAmount() { Amount = 10, CurrencySymbol = "USD" });
+            Buy(new MoneyAmount(12, "USD"),
+                new MoneyAmount(10, "USD"));
+            Buy(new MoneyAmount(7, "USD"),
+                new MoneyAmount(10, "USD"));
 
             IsHappyHour = true;
 
-            Buy(new MoneyAmount() { Amount = 7, CurrencySymbol = "USD" },
-                new MoneyAmount() { Amount = 10, CurrencySymbol = "USD" });
+            Buy(new MoneyAmount(7, "USD"),
+                new MoneyAmount(10, "USD"));
 
             Console.ReadLine();
         }

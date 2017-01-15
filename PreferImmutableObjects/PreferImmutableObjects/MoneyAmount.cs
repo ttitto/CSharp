@@ -1,6 +1,8 @@
 ﻿namespace PreferImmutableObjects
 {
-    sealed class MoneyAmount
+    using System;
+
+    sealed class MoneyAmount : IEquatable<MoneyAmount>
     {
         public decimal Amount { get; }
         public string CurrencySymbol { get; }
@@ -14,12 +16,20 @@
 
         public override bool Equals(object obj) => this.Equals(obj as MoneyAmount);
 
+        public static bool operator ==(MoneyAmount a, MoneyAmount b) =>
+            (object.ReferenceEquals(a, null) && object.ReferenceEquals(a, null)) ||
+            (!object.ReferenceEquals(a, null) && a.Equals(b));
+
+        public static bool operator !=(MoneyAmount a, MoneyAmount b) => !(a == b);
+
+        public override int GetHashCode() => this.Amount.GetHashCode() ^ this.CurrencySymbol.GetHashCode();
+
         public override string ToString()
         {
             return $"{this.Amount} {this.CurrencySymbol}";
         }
 
-        private bool Equals(MoneyAmount other) =>
+        public bool Equals(MoneyAmount other) =>
             other != null &&
             this.Amount == other.Amount &&
             this.CurrencySymbol == other.CurrencySymbol;

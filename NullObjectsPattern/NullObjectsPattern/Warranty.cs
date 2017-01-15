@@ -2,12 +2,12 @@
 {
     using System;
 
-    internal class Warranty
+    internal class TimeLimitedWarranty : IWarranty
     {
         private DateTime DateIssued { get; }
         private TimeSpan Duration { get; }
 
-        public Warranty(DateTime dateIssued, TimeSpan duration)
+        public TimeLimitedWarranty(DateTime dateIssued, TimeSpan duration)
         {
             this.DateIssued = dateIssued;
             this.Duration = duration;

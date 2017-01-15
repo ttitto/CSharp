@@ -27,7 +27,7 @@
 
             IWarranty moneyBack = new TimeLimitedWarranty(sellingDate, moneyBackSpan);
             IWarranty warranty = new TimeLimitedWarranty(sellingDate, warrantySpan);
-
+            
             SoldArticle goods = new SoldArticle(VoidWarranty.Instance, warranty);
 
             ClaimWarranty(goods);

@@ -20,9 +20,10 @@
 
         public IAccountState Freeze() => this;
 
-        public IAccountState WithDraw()
+        public IAccountState WithDraw(Action subtractFromBalance)
         {
             this.OnUnfreeze();
+            subtractFromBalance();
             return new Active(this.OnUnfreeze);
         }
 

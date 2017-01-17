@@ -19,7 +19,7 @@
 
         public void Withdraw(decimal amount)
         {
-            this.State = this.State.Deposit(() => { this.Balance -= amount; });
+            this.State = this.State.WithDraw(() => { this.Balance -= amount; });
         }
 
         public void HolderVerified()

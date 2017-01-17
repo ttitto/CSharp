@@ -16,6 +16,6 @@
 
         public IAccountState HolderVerified() => this;
 
-        public IAccountState WithDraw() => this;
+        public IAccountState WithDraw(Action subtractFromBalance) => this;
     }
 }

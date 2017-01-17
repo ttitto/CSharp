@@ -11,7 +11,7 @@
             this.OnUnfreeze = onUnfreeze;
         }
 
-        public IAccountState Deposit( Action addToBalance)
+        public IAccountState Deposit(Action addToBalance)
         {
             addToBalance();
             return this;
@@ -19,7 +19,11 @@
 
         public IAccountState Freeze() => new Frozen(this.OnUnfreeze);
 
-        public IAccountState WithDraw() => this;
+        public IAccountState WithDraw(Action subtractFromBalance)
+        {
+            subtractFromBalance();
+            return this;
+        }
 
         public IAccountState HolderVerified() => this;
 

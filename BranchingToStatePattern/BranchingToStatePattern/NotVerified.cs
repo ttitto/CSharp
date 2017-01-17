@@ -23,6 +23,10 @@
 
         public IAccountState HolderVerified() => new Active(this.OnUnfreeze);
 
-        public IAccountState WithDraw() => this;
+        public IAccountState WithDraw(Action subtractFromBalance)
+        {
+            subtractFromBalance();
+            return this;
+        }
     }
 }

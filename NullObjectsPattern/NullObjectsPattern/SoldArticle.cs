@@ -1,6 +1,7 @@
 ﻿namespace NullObjectsPattern
 {
     using System;
+    using System.Collections.Generic;
 
     internal class SoldArticle
     {
@@ -8,7 +9,7 @@
         public IWarranty ExpressWarranty { get; private set; }
         public IWarranty NotOperationalWarranty { get; }
         private IWarranty FailedCircuitryWarranty { get; set; }
-        private Part Circuitry { get; set; }
+        private List<Part> Circuitry { get; set; } = new List<Part>();
         private IWarranty CircuitryWarranty { get; set; }
 
         public SoldArticle(IWarranty moneyBack, IWarranty express)
@@ -42,25 +43,25 @@
 
         public void InstallCircuitry(Part circuitry, IWarranty extendedWarranty)
         {
-            this.Circuitry = circuitry;
+            this.Circuitry = new List<Part>() { circuitry };
             this.FailedCircuitryWarranty = extendedWarranty;
         }
 
         public void CircuitryNotOperational(DateTime detectedOn)
         {
-            if (null != this.Circuitry)
+
+            this.Circuitry.ForEach(circuitry =>
             {
-                this.Circuitry.MarkDefective(detectedOn);
+                circuitry.MarkDefective(detectedOn);
                 this.CircuitryWarranty = this.FailedCircuitryWarranty;
-            }
+            });
         }
 
         public void ClaimCircuitryWarranty(Action onValidClaim)
         {
-            if (null != this.Circuitry)
-            {
-                this.CircuitryWarranty.Claim(this.Circuitry.DefectDetectedOn, onValidClaim);
-            }
+            this.Circuitry.ForEach(circuitry =>
+                 this.CircuitryWarranty.Claim(circuitry.DefectDetectedOn, onValidClaim));
+
         }
     }
 }

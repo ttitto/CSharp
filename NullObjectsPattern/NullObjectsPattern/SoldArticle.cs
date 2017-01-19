@@ -48,13 +48,19 @@
 
         public void CircuitryNotOperational(DateTime detectedOn)
         {
-            this.Circuitry.MarkDefective(detectedOn);
-            this.CircuitryWarranty = this.FailedCircuitryWarranty;
+            if (null != this.Circuitry)
+            {
+                this.Circuitry.MarkDefective(detectedOn);
+                this.CircuitryWarranty = this.FailedCircuitryWarranty;
+            }
         }
 
         public void ClaimCircuitryWarranty(Action onValidClaim)
         {
-            this.CircuitryWarranty.Claim(this.Circuitry.DefectDetectedOn, onValidClaim);
+            if (null != this.Circuitry)
+            {
+                this.CircuitryWarranty.Claim(this.Circuitry.DefectDetectedOn, onValidClaim);
+            }
         }
     }
 }

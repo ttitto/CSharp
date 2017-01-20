@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EnumerableExtensions.cs" />
+    <Compile Include="Common\Option.cs" />
     <Compile Include="IWarranty.cs" />
     <Compile Include="LifeTimeWarranty.cs" />
     <Compile Include="Part.cs" />

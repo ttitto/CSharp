@@ -1,6 +1,7 @@
 ﻿namespace CheckDigit
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     internal static class Int64Extensions
     {
@@ -12,5 +13,8 @@
                 number /= 10;
             } while (number > 0);
         }
+
+        public static IEnumerable<int> DigitsFromHighest(this long number) =>
+            number.DigitsFromLowest().Reverse();
     }
 }

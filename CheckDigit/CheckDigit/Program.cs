@@ -1,29 +1,29 @@
 ﻿namespace CheckDigit
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     class Program
     {
-        static int GetControllDigit(long number)
+        private static IEnumerable<int> MultiplyingFactors
         {
-            int sum = 0;
-            bool isOddPos = true;
-            while (number > 0)                      // infrastructure
+            get
             {
-                int digit = (int)(number % 10);     // infrastructure
-                if (isOddPos)                       // domain
+                int factor = 3;
+                while (true)
                 {
-                    sum += 3 * digit;               // 3 = parameter
-                }
-                else
-                {
-                    sum += digit;
-                    number /= 10;                   // infrastructure
-                    isOddPos = !isOddPos;           // domain
+                    yield return factor;
+                    factor = 4 - factor;
                 }
             }
-
-            int modulo = sum % 7;                   // 7 = parameter
-            return modulo;                          // % = domain
         }
+
+        static int GetControllDigit(long number) =>
+            number
+            .DigitsFromLowest()
+            .Zip(MultiplyingFactors, (a, b) => a * b)
+            .Sum()
+            % 7;
 
         static void Main(string[] args)
         {
